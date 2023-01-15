@@ -29,6 +29,12 @@ steps:
       echo Hello India I love you
       
       echo Hello world
+- task: CmdLine@2
+  inputs:
+    script: |
+      echo Hello Odisha I love you 
+      
+         
 # steps:
 # - script: echo Hello, world!
 #   displayName: 'Run a one-line script'

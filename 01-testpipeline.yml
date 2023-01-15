@@ -6,25 +6,38 @@
 trigger:
 - main
 
+strategy:
+  matrix:
+    linux:
+      imageName: "ubuntu-latest"
+    # mac:
+    #   imageName: "macOS-latest"
+    windows:
+      imageName: "windows-latest"
+  # maxParallel: 2
+
 pool:
-  vmImage: ubuntu-latest
+  vmImage: $(imageName)
 
-# steps:
-# - script: echo Hello, world!
-#   displayName: 'Run a one-line script'
+# pool:
+#   vmImage: ubuntu-latest
 
-# - script: |
-#     echo Add other tasks to build, test, and deploy your project.
-#     echo See https://aka.ms/yaml
-#   displayName: 'Run a multi-line script'
 steps:
- - task: Maven@4
-   inputs:
-     mavenPomFile: 'pom.xml'
-     mavenOptions: '-Xmx3072m'
-     javaHomeOption: 'JDKVersion'
-     jdkVersionOption: '1.11'
-     jdkArchitectureOption: 'x64'
-     publishJUnitResults: false
-     testResultsFiles: '**/surefire-reports/TEST-*.xml'
-     goals: 'package'  
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
+
+- script: |
+    echo Add other tasks to build, test, and deploy your project.
+    echo See https://aka.ms/yaml
+  displayName: 'Run a multi-line script'
+# steps:
+#  - task: Maven@4
+#    inputs:
+#      mavenPomFile: 'pom.xml'
+#      mavenOptions: '-Xmx3072m'
+#      javaHomeOption: 'JDKVersion'
+#      jdkVersionOption: '1.11'
+#      jdkArchitectureOption: 'x64'
+#      publishJUnitResults: false
+#      testResultsFiles: '**/surefire-reports/TEST-*.xml'
+#      goals: 'package'  
